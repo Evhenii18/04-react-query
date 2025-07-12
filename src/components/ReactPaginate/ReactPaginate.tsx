@@ -5,7 +5,11 @@ import css from "./ReactPaginate.module.css";
 interface ReactPaginationProps {
   pageCount: number;
   forcePage: number;
-  onPageChange: (selectedItem: { selected: number }) => void;
+  onPageChange: ({ selected }: { selected: number }) => void;
+  pageRangeDisplayed?: number;
+  marginPagesDisplayed?: number;
+  nextLabel?: string;
+  previousLabel?: string;
 }
 
 const ReactPagination: FC<ReactPaginationProps> = ({
