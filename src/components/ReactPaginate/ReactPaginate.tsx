@@ -1,4 +1,3 @@
-import type { FC } from "react";
 import ReactPaginate from "react-paginate";
 import css from "./ReactPaginate.module.css";
 
@@ -12,26 +11,28 @@ interface ReactPaginationProps {
   previousLabel?: string;
 }
 
-const ReactPagination: FC<ReactPaginationProps> = ({
+export default function ReactPagination({
   pageCount,
   forcePage,
   onPageChange,
-}) => {
+  pageRangeDisplayed = 5,
+  marginPagesDisplayed = 1,
+  nextLabel = "→",
+  previousLabel = "←",
+}: ReactPaginationProps) {
   if (pageCount <= 1) return null;
 
   return (
     <ReactPaginate
       pageCount={pageCount}
-      pageRangeDisplayed={5}
-      marginPagesDisplayed={1}
-      onPageChange={onPageChange}
       forcePage={forcePage}
+      onPageChange={onPageChange}
+      pageRangeDisplayed={pageRangeDisplayed}
+      marginPagesDisplayed={marginPagesDisplayed}
+      nextLabel={nextLabel}
+      previousLabel={previousLabel}
       containerClassName={css.pagination}
       activeClassName={css.active}
-      nextLabel="→"
-      previousLabel="←"
     />
   );
-};
-
-export default ReactPagination;
+}
